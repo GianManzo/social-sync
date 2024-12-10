@@ -2,7 +2,7 @@
 
 import { useFormStatus } from "react-dom";
 
-import styled from "./form-button.module.css";
+import { Button } from "./form-button.styles";
 
 type FormButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -12,8 +12,8 @@ export const FormButton = ({
 }: FormButtonProps) => {
   const { pending } = useFormStatus();
   return (
-    <button {...props} className={styled.button} disabled={pending}>
+    <Button {...props} disabled={pending}>
       {children}
-    </button>
+    </Button>
   );
 };

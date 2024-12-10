@@ -1,12 +1,13 @@
-import styled from "./login.module.css";
+import { CadasterForm, ContainerLogin, ImageContainer } from "./login.styles";
 export default async function LoginLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className={styled.containerLogin}>
-      <div className={styled.cadasterForm}>{children}</div>
-    </div>
+    <ContainerLogin>
+      <ImageContainer />
+      <CadasterForm>{children}</CadasterForm>
+    </ContainerLogin>
   );
 }

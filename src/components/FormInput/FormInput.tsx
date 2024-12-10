@@ -1,4 +1,9 @@
-import styled from "./form-input.module.css";
+import {
+  ErrorMessage,
+  FormImputContainer,
+  Input,
+  Label,
+} from "./form-input.styles";
 
 interface IFormInput extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -7,12 +12,10 @@ interface IFormInput extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export const FormInput = ({ label, error, ...props }: IFormInput) => {
   return (
-    <div className={styled.container}>
-      <label className={styled.label} htmlFor={props.name}>
-        {label}
-      </label>
-      <input className={styled.formInput} {...props} id={props.name} />
-      {error && <p className={styled.formError}>{error}</p>}
-    </div>
+    <FormImputContainer>
+      <Label htmlFor={props.name}>{label}</Label>
+      <Input {...props} id={props.name} />
+      {error && <ErrorMessage>{error}</ErrorMessage>}
+    </FormImputContainer>
   );
 };

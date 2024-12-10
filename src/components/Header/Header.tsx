@@ -1,13 +1,19 @@
 import Link from "next/link";
-import styled from "./header.module.css";
+
 import Image from "next/image";
+import {
+  HeaderContainer,
+  HeaderNav,
+  LinkLogin,
+  LinkLogo,
+} from "./header.styles";
 
 export const Header = () => {
   const user = false;
   return (
-    <div className={styled.container}>
-      <nav className={`${styled.nav} container`}>
-        <Link className="logo" href="/">
+    <HeaderContainer>
+      <HeaderNav className="container">
+        <LinkLogo href="/">
           <Image
             src="/assets/dogs.svg"
             alt="dogs"
@@ -15,17 +21,15 @@ export const Header = () => {
             height={22}
             priority
           />
-        </Link>
+        </LinkLogo>
         {user ? (
-          <Link className="login" href="/account">
-            Gian
-          </Link>
+          <LinkLogin href="/account">Gian</LinkLogin>
         ) : (
           <Link className="login" href="/login">
             Login / Criar
           </Link>
         )}
-      </nav>
-    </div>
+      </HeaderNav>
+    </HeaderContainer>
   );
 };

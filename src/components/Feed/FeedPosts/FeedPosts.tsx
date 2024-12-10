@@ -2,13 +2,13 @@ import { IPost } from "@/actions/posts-get";
 import Image from "next/image";
 import Link from "next/link";
 
-import styled from "./feed-posts.module.css";
+import { Feed, FeedItem, Views } from "./feed-posts.styles";
 
 export const FeedPosts = ({ posts }: { posts: IPost[] }) => {
   return (
-    <ul className={styled.feed}>
+    <Feed>
       {posts.map((post, i) => (
-        <li className={styled.feedItem} key={post.id + i}>
+        <FeedItem key={post.id + i}>
           <Link href={`/post/${post.id}`} scroll={false}>
             <Image
               src={post.src}
@@ -18,10 +18,10 @@ export const FeedPosts = ({ posts }: { posts: IPost[] }) => {
               sizes="80vw"
             />
 
-            <span className={styled.view}>{post.acessos}</span>
+            <Views>{post.acessos}</Views>
           </Link>
-        </li>
+        </FeedItem>
       ))}
-    </ul>
+    </Feed>
   );
 };
