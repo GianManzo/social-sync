@@ -1,6 +1,12 @@
 "use client";
 import styled from "styled-components";
 
+export const SectionLogin = styled.section`
+  @media (max-width: 40rem) {
+    padding: 2rem;
+  }
+`;
+
 export const ContainerLogin = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -32,23 +38,11 @@ export const LoginForm = styled.div`
 export const CadasterForm = styled.div`
   margin-top: 4rem;
   margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   p {
     margin-block: 2rem;
-  }
-`;
-
-export const LoginSubtitle = styled.h2`
-  font-family: var(--type-second);
-  line-height: 1;
-  font-size: 2rem;
-
-  &:after {
-    content: "";
-    display: block;
-    background: #ddd;
-    height: 0.5rem;
-    width: 3rem;
-    border-radius: 0.2rem;
   }
 `;

@@ -12,6 +12,6 @@ export default function ThemeProviderClient({
   useEffect(() => {
     setIsHydrated(true);
   }, []);
-  if (isHydrated)
-    return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  if (!isHydrated) return null;
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }
