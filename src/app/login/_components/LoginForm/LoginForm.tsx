@@ -13,14 +13,24 @@ import {
   LinkButton,
   SubTitle,
 } from "./login-form.styles";
+import { signupAction } from "@/actions/sigunp";
 
-export const LoginForm = () => {
+type LoginFormProps = "signup" | "login" | "forget-password" | undefined;
+
+export const LoginForm = ({ type = "login" }: { type: LoginFormProps }) => {
+  const isSignup = type === "signup";
+  const isLogin = type === "login";
+  const isForgetPassword = type === "forget-password";
+
   const { isAuthenticated, login } = useAuthStore();
-  const [state, formAction] = useActionState(loginAction, {
-    ok: false,
-    error: "",
-    data: null,
-  });
+  const [state, formAction] = useActionState(
+    isSignup ? signupAction : loginAction,
+    {
+      ok: false,
+      error: "",
+      data: null,
+    }
+  );
 
   useEffect(() => {
     if (state.ok && !isAuthenticated) {
@@ -38,20 +48,25 @@ export const LoginForm = () => {
     <>
       <Form action={formAction}>
         <FormInput label="Usuário" name="username" type="text" />
+        {isSignup && <FormInput label="Email" name="email" type="email" />}
         <FormInput label="Senha" name="password" type="password" />
         <ErrorMessage error={state.error} />
-        <FormButton />
+        <FormButton>{isLogin ? "Entrar" : "Cadastrar"}</FormButton>
       </Form>
 
-      <ForgetPassword href="login/forget-password">
-        Perdeu a senha?
-      </ForgetPassword>
+      {isLogin && (
+        <>
+          <ForgetPassword href="login/forget-password">
+            Perdeu a senha?
+          </ForgetPassword>
 
-      <Cadaster>
-        <SubTitle>Cadastre-se</SubTitle>
-        <p>Ainda não possui cadastro?</p>
-        <LinkButton href="login/signup">Cadastre-se</LinkButton>
-      </Cadaster>
+          <Cadaster>
+            <SubTitle>Cadastre-se</SubTitle>
+            <p>Ainda não possui cadastro?</p>
+            <LinkButton href="login/signup">Cadastre-se</LinkButton>
+          </Cadaster>
+        </>
+      )}
     </>
   );
 };

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { LoginForm } from "../_components";
 
 export const metadata: Metadata = {
   title: "Crie sua conta",
@@ -8,6 +9,7 @@ export default async function SignupPage() {
   return (
     <div className="animeLeft">
       <h1 className="title">Cadastre-se</h1>
+      <LoginForm type="signup" />
     </div>
   );
 }

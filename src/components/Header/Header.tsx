@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import Image from "next/image";
 import {
   HeaderContainer,
@@ -25,9 +23,9 @@ export const Header = () => {
         {user ? (
           <LinkLogin href="/account">Gian</LinkLogin>
         ) : (
-          <Link className="login" href="/login">
+          <LinkLogin className="login" href="/login">
             Login / Criar
-          </Link>
+          </LinkLogin>
         )}
       </HeaderNav>
     </HeaderContainer>
